@@ -31,6 +31,29 @@ button { border: 0; cursor: pointer; }
 .bag-button { background: transparent; color: var(--ink); }
 .bag-count { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-left: 5px; border: 1px solid var(--ink); border-radius: 50%; font-size: 9px; }
 .menu-toggle { display: none; background: transparent; color: var(--ink); text-transform: uppercase; letter-spacing: .1em; font-size: 10px; }
+.bag-overlay { position: fixed; z-index: 20; inset: 0; visibility: hidden; background: rgba(28, 42, 45, .3); opacity: 0; transition: opacity .35s ease, visibility .35s ease; }
+.bag-drawer { position: fixed; z-index: 21; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); padding: 42px 38px 32px; flex-direction: column; background: var(--paper); box-shadow: -18px 0 45px rgba(28, 42, 45, .12); transform: translateX(100%); transition: transform .55s cubic-bezier(.2,.65,.2,1); }
+.bag-drawer.is-open { transform: translateX(0); }
+.bag-overlay.is-open { visibility: visible; opacity: 1; }
+.bag-drawer-header { display: flex; align-items: start; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.bag-drawer-header .eyebrow { margin-bottom: 12px; }
+.bag-drawer h2 { font-size: 52px; }
+.bag-close { width: 32px; height: 32px; background: var(--ivory); border-radius: 50%; color: var(--red); font-size: 24px; line-height: 28px; transform: rotate(45deg); transition: transform .25s ease; }
+.bag-close:hover { transform: rotate(135deg); }
+.bag-empty { padding: 32px 0; color: var(--muted); font-family: var(--serif); font-size: 20px; line-height: 1.1; }
+.bag-items { display: grid; gap: 18px; overflow-y: auto; }
+.bag-item { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding-bottom: 17px; border-bottom: 1px solid var(--line); animation: bagItemIn .4s ease both; }
+.bag-item h3 { margin: 0 0 5px; font-family: var(--serif); font-size: 22px; font-weight: 600; }
+.bag-item p { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; }
+.bag-item-side { display: flex; align-items: end; flex-direction: column; justify-content: space-between; }
+.bag-item-side strong { font-size: 12px; font-weight: 500; }
+.remove-item { padding: 0; background: transparent; color: var(--red); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+.bag-footer { margin-top: auto; padding-top: 25px; border-top: 1px solid var(--ink); }
+.bag-total-row { display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.bag-total-row strong { font-weight: 500; }
+.checkout-button { display: flex; width: 100%; align-items: center; justify-content: space-between; padding: 16px 18px; background: var(--navy); color: var(--paper); font-size: 10px; letter-spacing: .12em; text-align: left; text-transform: uppercase; }
+.checkout-button span { color: #d9a19a; font-size: 16px; transition: transform .25s ease; }
+.checkout-button:hover span { transform: translateX(5px); }
 
 .hero { position: relative; min-height: 650px; display: flex; align-items: center; overflow: hidden; background: var(--navy); color: #f8f2e9; }
 .image-one { background-image: linear-gradient(90deg, rgba(22, 36, 37, .65) 0%, rgba(22, 36, 37, .12) 70%), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
@@ -110,6 +133,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 @keyframes heroZoom { from { transform: scale(1.04); } to { transform: scale(1); } }
 @keyframes pulseMark { 0%, 100% { opacity: .45; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
 @keyframes headerSettle { from { transform: translateY(-10px); } to { transform: translateY(0); } }
+@keyframes bagItemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 .js-enabled .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.65,.2,1); }
 .js-enabled .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -132,6 +156,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .site-nav { position: absolute; z-index: 5; top: 114px; right: 6vw; left: 6vw; display: none; margin: 0; padding: 22px; background: var(--paper); box-shadow: 0 12px 30px rgba(28,42,45,.12); }
   .site-nav.is-open { display: grid; gap: 20px; }
   .bag-button { margin-left: auto; margin-right: 20px; }
+  .bag-drawer { padding: 32px 24px 24px; }
   .hero { min-height: 610px; align-items: flex-end; }
   .hero-copy { width: 88%; margin: 0 6vw 75px; }
   h1 { font-size: clamp(54px, 15vw, 80px); }

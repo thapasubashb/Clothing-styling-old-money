@@ -8,6 +8,13 @@ const year = document.querySelector('#year');
 const bagCount = document.querySelector('.bag-count');
 const addButtons = document.querySelectorAll('.add-button');
 const siteHeader = document.querySelector('.site-header');
+const bagButton = document.querySelector('.bag-button');
+const bagDrawer = document.querySelector('.bag-drawer');
+const bagOverlay = document.querySelector('.bag-overlay');
+const bagItemsElement = document.querySelector('.bag-items');
+const bagEmpty = document.querySelector('.bag-empty');
+const bagTotalElement = document.querySelector('.bag-total');
+const bagItems = [];
 let bagTotal = 0;
 
 document.body.classList.add('js-enabled');
@@ -75,13 +82,50 @@ document.querySelectorAll('.heart-button').forEach((button) => {
   });
 });
 
+const renderBag = () => {
+  bagCount.textContent = bagItems.length;
+  bagTotalElement.textContent = `$${bagItems.reduce((total, item) => total + item.price, 0)}`;
+  bagEmpty.hidden = bagItems.length > 0;
+  bagItemsElement.innerHTML = bagItems.map((item, index) => `
+    <div class="bag-item">
+      <div><h3>${item.name}</h3><p>${item.detail}</p></div>
+      <div class="bag-item-side"><strong>$${item.price}</strong><button class="remove-item" type="button" data-index="${index}">Remove</button></div>
+    </div>
+  `).join('');
+};
+
+const setBagOpen = (isOpen) => {
+  bagDrawer.classList.toggle('is-open', isOpen);
+  bagOverlay.classList.toggle('is-open', isOpen);
+  bagDrawer.setAttribute('aria-hidden', !isOpen);
+  document.body.classList.toggle('bag-is-open', isOpen);
+};
+
+bagButton.addEventListener('click', () => setBagOpen(true));
+document.querySelectorAll('[data-close-bag]').forEach((button) => button.addEventListener('click', () => setBagOpen(false)));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setBagOpen(false);
+});
+
 addButtons.forEach((button) => {
   button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const name = card.querySelector('h3').textContent;
+    const detail = card.querySelector('.product-meta p').textContent;
+    const price = Number(card.querySelector('.product-action strong').textContent.replace('$', ''));
+    bagItems.push({ name, detail, price });
     bagTotal += 1;
-    bagCount.textContent = bagTotal;
+    renderBag();
     button.classList.add('is-added');
     button.textContent = 'Added';
+    setBagOpen(true);
   });
+});
+
+bagItemsElement.addEventListener('click', (event) => {
+  if (!event.target.matches('.remove-item')) return;
+  bagItems.splice(Number(event.target.dataset.index), 1);
+  renderBag();
 });
 
 signupForm.addEventListener('submit', (event) => {

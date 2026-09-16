@@ -26,8 +26,25 @@
             <a href="#atelier">Our atelier</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="bag-button" aria-label="Shopping bag">Bag <span class="bag-count">0</span></button>
+        <button class="bag-button" aria-label="Shopping bag" aria-controls="bag-drawer">Bag <span class="bag-count">0</span></button>
     </header>
+
+    <div class="bag-overlay" data-close-bag></div>
+    <aside class="bag-drawer" id="bag-drawer" aria-hidden="true" aria-labelledby="bag-title">
+        <div class="bag-drawer-header">
+            <div>
+                <p class="eyebrow">Your selection</p>
+                <h2 id="bag-title">The <i>bag</i></h2>
+            </div>
+            <button class="bag-close" type="button" data-close-bag aria-label="Close shopping bag">+</button>
+        </div>
+        <div class="bag-empty">Your considered wardrobe starts here.</div>
+        <div class="bag-items"></div>
+        <div class="bag-footer">
+            <div class="bag-total-row"><span>Subtotal</span><strong class="bag-total">$0</strong></div>
+            <button class="checkout-button" type="button">Proceed to checkout <span>-></span></button>
+        </div>
+    </aside>
 
     <main id="top">
         <section class="hero">
