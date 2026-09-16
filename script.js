@@ -7,9 +7,21 @@ const formMessage = document.querySelector('.form-message');
 const year = document.querySelector('#year');
 const bagCount = document.querySelector('.bag-count');
 const addButtons = document.querySelectorAll('.add-button');
+const siteHeader = document.querySelector('.site-header');
 let bagTotal = 0;
 
 document.body.classList.add('js-enabled');
+
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    window.requestAnimationFrame(() => {
+      siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+}, { passive: true });
 
 const revealItems = document.querySelectorAll('.manifesto, .collection, .feature-story, .newsletter, .site-footer');
 if ('IntersectionObserver' in window) {
