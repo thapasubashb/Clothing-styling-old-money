@@ -5,6 +5,30 @@ const productCards = document.querySelectorAll('.product-card');
 const signupForm = document.querySelector('.signup-form');
 const formMessage = document.querySelector('.form-message');
 const year = document.querySelector('#year');
+const bagCount = document.querySelector('.bag-count');
+const addButtons = document.querySelectorAll('.add-button');
+let bagTotal = 0;
+
+document.body.classList.add('js-enabled');
+
+const revealItems = document.querySelectorAll('.manifesto, .collection, .feature-story, .newsletter, .site-footer');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  revealItems.forEach((item) => {
+    item.classList.add('reveal');
+    revealObserver.observe(item);
+  });
+} else {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+}
 
 menuToggle.addEventListener('click', () => {
   const isOpen = siteNav.classList.toggle('is-open');
@@ -36,6 +60,15 @@ document.querySelectorAll('.heart-button').forEach((button) => {
     const isSaved = button.classList.toggle('is-saved');
     button.textContent = isSaved ? '♥' : '♡';
     button.setAttribute('aria-label', isSaved ? 'Remove from wishlist' : 'Add to wishlist');
+  });
+});
+
+addButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    bagTotal += 1;
+    bagCount.textContent = bagTotal;
+    button.classList.add('is-added');
+    button.textContent = 'Added';
   });
 });
 
