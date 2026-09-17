@@ -134,7 +134,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .footer-brand p { margin: 0; color: #b2b8b2; font-family: var(--serif); font-size: 18px; line-height: 1.3; }
 .footer-about { display: grid; gap: 9px; padding-top: 2px; }
 .footer-about .eyebrow { margin: 0; color: #d9a19a; }
-.footer-about h3 { margin: 0; font-family: var(--serif); font-size: 30px; color: #f4f0e8; font-weight: 500; }
+.footer-about h3 { margin: 0; font-family: var(--serif); font-size: clamp(28px, 2vw, 34px); color: #f4f0e8; font-weight: 500; line-height: 1; letter-spacing: -0.03em; }
 .footer-about p { margin: 0; color: #b2b8b2; font-family: var(--serif); font-size: 16px; line-height: 1.45; }
 .github-link { display: inline-block; width: fit-content; margin-top: 2px; padding-bottom: 4px; border-bottom: 1px solid rgba(217, 161, 154, 0.8); color: #f4f0e8; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; transition: color .2s ease, border-color .2s ease; }
 .github-link:hover { color: #d9a19a; border-color: #f4f0e8; }
