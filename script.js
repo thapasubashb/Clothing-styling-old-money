@@ -19,6 +19,24 @@ let bagTotal = 0;
 
 document.body.classList.add('js-enabled');
 
+const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+let currentSlideIndex = 0;
+let heroSlideTimer;
+
+const showSlide = (index) => {
+  heroSlides.forEach((slide, slideIndex) => {
+    slide.classList.toggle('is-active', slideIndex === index);
+  });
+  currentSlideIndex = index;
+};
+
+if (heroSlides.length > 1) {
+  heroSlideTimer = setInterval(() => {
+    const nextIndex = (currentSlideIndex + 1) % heroSlides.length;
+    showSlide(nextIndex);
+  }, 4200);
+}
+
 let scrollTicking = false;
 window.addEventListener('scroll', () => {
   if (!scrollTicking) {

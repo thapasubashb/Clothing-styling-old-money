@@ -55,9 +55,15 @@ button { border: 0; cursor: pointer; }
 .checkout-button span { color: #d9a19a; font-size: 16px; transition: transform .25s ease; }
 .checkout-button:hover span { transform: translateX(5px); }
 
-.hero { position: relative; min-height: 650px; display: flex; align-items: center; overflow: hidden; background: var(--navy); color: #f8f2e9; }
-.image-one { background-image: linear-gradient(90deg, rgba(22, 36, 37, .65) 0%, rgba(22, 36, 37, .12) 70%), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
+.hero { position: relative; min-height: 650px; overflow: hidden; background: var(--navy); color: #f8f2e9; }
+.hero-slider { position: relative; min-height: 650px; }
+.hero-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, transform .9s ease; }
+.hero-slide.is-active { opacity: 1; visibility: visible; }
 .hero-image { position: absolute; inset: 0; animation: heroZoom 14s ease-out both; }
+.hero-bg-one { background-image: linear-gradient(90deg, rgba(22, 36, 37, .65) 0%, rgba(22, 36, 37, .12) 70%), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
+.hero-bg-two { background-image: linear-gradient(90deg, rgba(18, 28, 31, .7) 0%, rgba(18, 28, 31, .18) 70%), url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
+.hero-bg-three { background-image: linear-gradient(90deg, rgba(24, 33, 34, .68) 0%, rgba(24, 33, 34, .14) 70%), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
+.hero-bg-four { background-image: linear-gradient(90deg, rgba(28, 42, 45, .7) 0%, rgba(28, 42, 45, .18) 70%), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
 .hero-copy { position: relative; z-index: 1; width: min(650px, 80%); margin-left: 12vw; padding-top: 30px; animation: rise .8s ease both; }
 .eyebrow { margin: 0 0 23px; color: var(--red); font-size: 10px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
 .hero .eyebrow { color: #d9a19a; }
