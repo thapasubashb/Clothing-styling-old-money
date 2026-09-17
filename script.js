@@ -34,7 +34,7 @@ if (heroSlides.length > 1) {
   heroSlideTimer = setInterval(() => {
     const nextIndex = (currentSlideIndex + 1) % heroSlides.length;
     showSlide(nextIndex);
-  }, 4200);
+  }, 5000);
 }
 
 let scrollTicking = false;
