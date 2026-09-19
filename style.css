@@ -92,6 +92,17 @@ button { border: 0; cursor: pointer; }
 .hero-lookbook-card > span, .hero-lookbook-card p { margin: 0; color: #d4d0c6; font-size: 8px; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
 .hero-lookbook-card strong { color: #f8f2e9; font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: .84; }
 .hero-lookbook-card strong i { color: #d9a19a; font-weight: 400; }
+.hero-slide:nth-child(4)::after { position: absolute; z-index: 0; inset: 10% 5.5vw; border: 1px solid rgba(248, 242, 233, .2); content: ''; pointer-events: none; }
+.hero-season-ring { position: absolute; z-index: 2; top: 14%; right: 12vw; display: flex; width: 116px; height: 116px; align-items: center; justify-content: center; flex-direction: column; gap: 8px; border: 1px solid rgba(217, 161, 154, .8); border-radius: 50%; color: #f8f2e9; font-size: 9px; letter-spacing: .14em; transform: rotate(-14deg); }
+.hero-season-ring i { display: block; width: 28px; border-top: 1px solid #d9a19a; }
+.hero-slow-note { position: absolute; z-index: 2; top: 44%; right: 7.5vw; color: rgba(248, 242, 233, .78); font-family: var(--serif); font-size: 18px; line-height: .95; text-align: right; }
+.hero-wardrobe-card { position: absolute; z-index: 2; right: 12vw; bottom: 13%; display: grid; width: 205px; gap: 12px; padding: 17px 18px; border-bottom: 1px solid #d9a19a; background: rgba(28, 42, 45, .24); backdrop-filter: blur(7px); animation: detailIn 1s .25s ease both; }
+.hero-wardrobe-card > span { color: #d4d0c6; font-size: 8px; letter-spacing: .13em; text-transform: uppercase; }
+.hero-wardrobe-card strong { color: #f8f2e9; font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: .84; }
+.hero-wardrobe-card strong i { color: #d9a19a; font-weight: 400; }
+.hero-wardrobe-card div { display: flex; gap: 7px; }
+.hero-wardrobe-card b { display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid rgba(248, 242, 233, .4); color: #d4d0c6; font-size: 8px; font-weight: 400; }
+.hero-wardrobe-card b:first-child { border-color: #d9a19a; color: #f8f2e9; }
 .eyebrow { margin: 0 0 23px; color: var(--red); font-size: 10px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
 .hero .eyebrow { color: #d9a19a; }
 h1, h2, h3, p { margin-top: 0; }
@@ -222,6 +233,12 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .hero-time-stamp { top: 10%; right: 7vw; font-size: 78px; }
   .hero-lookbook-card { right: 8vw; bottom: 30%; width: 155px; padding: 13px; }
   .hero-lookbook-card strong { font-size: 22px; }
+  .hero-slide:nth-child(4)::after { inset: 4% 6vw; }
+  .hero-season-ring { top: 10%; right: 8vw; width: 88px; height: 88px; }
+  .hero-slow-note { top: 37%; right: 8vw; font-size: 15px; }
+  .hero-wardrobe-card { right: 8vw; bottom: 9%; width: 155px; padding: 13px; }
+  .hero-wardrobe-card strong { font-size: 22px; }
+  .hero-wardrobe-card b { width: 20px; height: 20px; }
   h1 { font-size: clamp(54px, 15vw, 80px); }
   .hero-intro { font-size: 18px; }
   .manifesto, .newsletter { padding: 80px 8vw; }
