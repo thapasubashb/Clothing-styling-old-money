@@ -76,6 +76,14 @@ button { border: 0; cursor: pointer; }
 .hero-detail-rule { width: 34px; border-top: 1px solid #d9a19a; }
 .hero-scroll-cue { position: absolute; z-index: 2; bottom: 35px; left: 50%; display: flex; align-items: center; gap: 10px; color: rgba(248, 242, 233, .75); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; transform: translateX(-50%); }
 .hero-scroll-cue i { display: block; width: 34px; border-top: 1px solid #d9a19a; animation: cueLine 1.8s ease-in-out infinite; }
+.hero-slide:nth-child(2)::after { position: absolute; z-index: 0; top: 12%; right: 9vw; width: min(29vw, 390px); height: 68%; border: 1px solid rgba(248, 242, 233, .24); content: ''; transform: rotate(8deg); pointer-events: none; }
+.hero-tailoring-line { position: absolute; z-index: 0; top: 20%; right: 22%; width: 20vw; height: 34vw; max-height: 440px; border: 1px solid rgba(217, 161, 154, .32); border-radius: 48% 52% 45% 55%; transform: rotate(24deg); }
+.hero-slide-label { position: absolute; z-index: 2; top: 17%; left: 5.5vw; display: flex; align-items: center; gap: 12px; color: rgba(248, 242, 233, .8); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; transform: rotate(-90deg) translateX(-100%); transform-origin: left top; }
+.hero-slide-label i { display: block; width: 48px; border-top: 1px solid #d9a19a; }
+.hero-fabric-card { position: absolute; z-index: 2; right: 11vw; bottom: 13%; display: grid; width: 190px; gap: 10px; padding: 17px; border-left: 2px solid #d9a19a; background: rgba(28, 42, 45, .3); backdrop-filter: blur(7px); animation: detailIn 1s .25s ease both; }
+.hero-fabric-card > span, .hero-fabric-card p { margin: 0; color: #d4d0c6; font-size: 8px; letter-spacing: .13em; line-height: 1.5; text-transform: uppercase; }
+.hero-fabric-card strong { color: #f8f2e9; font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: .84; }
+.hero-fabric-card strong i { color: #d9a19a; font-weight: 400; }
 .eyebrow { margin: 0 0 23px; color: var(--red); font-size: 10px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; }
 .hero .eyebrow { color: #d9a19a; }
 h1, h2, h3, p { margin-top: 0; }
@@ -195,6 +203,11 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .hero-detail-card strong { font-size: 20px; }
   .hero-detail-caption { font-size: 7px; }
   .hero-scroll-cue { display: none; }
+  .hero-slide:nth-child(2)::after { top: 7%; right: 7vw; width: 48vw; height: 49%; }
+  .hero-tailoring-line { top: 15%; right: 17%; width: 35vw; height: 48vw; }
+  .hero-slide-label { left: 4vw; }
+  .hero-fabric-card { right: 8vw; bottom: 9%; width: 145px; padding: 13px; }
+  .hero-fabric-card strong { font-size: 22px; }
   h1 { font-size: clamp(54px, 15vw, 80px); }
   .hero-intro { font-size: 18px; }
   .manifesto, .newsletter { padding: 80px 8vw; }
