@@ -20,22 +20,56 @@ let bagTotal = 0;
 document.body.classList.add('js-enabled');
 
 const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+const heroDoneButton = document.querySelector('.hero-done-button');
+const heroNextLabel = document.querySelector('.hero-next-label');
 let currentSlideIndex = 0;
-let heroSlideTimer;
+let heroAdvanceTimer = null;
+let isWaitingForNextSlide = false;
+
+const updateHeroControls = () => {
+  if (!heroDoneButton || !heroNextLabel) return;
+
+  if (isWaitingForNextSlide) {
+    heroDoneButton.disabled = true;
+    heroDoneButton.textContent = 'Done';
+    heroNextLabel.textContent = 'Next slide in 3s';
+    return;
+  }
+
+  heroDoneButton.disabled = false;
+  heroDoneButton.textContent = 'Done';
+  heroNextLabel.textContent = 'Ready for the next slide';
+};
 
 const showSlide = (index) => {
+  if (!heroSlides.length) return;
+
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle('is-active', slideIndex === index);
   });
+
   currentSlideIndex = index;
+  clearTimeout(heroAdvanceTimer);
+  heroAdvanceTimer = null;
+  isWaitingForNextSlide = false;
+  updateHeroControls();
 };
 
-if (heroSlides.length > 1) {
-  heroSlideTimer = setInterval(() => {
-    const nextIndex = (currentSlideIndex + 1) % heroSlides.length;
-    showSlide(nextIndex);
-  }, 5000);
+if (heroSlides.length > 1 && heroDoneButton && heroNextLabel) {
+  heroDoneButton.addEventListener('click', () => {
+    if (isWaitingForNextSlide) return;
+
+    isWaitingForNextSlide = true;
+    updateHeroControls();
+
+    heroAdvanceTimer = setTimeout(() => {
+      const nextIndex = (currentSlideIndex + 1) % heroSlides.length;
+      showSlide(nextIndex);
+    }, 3000);
+  });
 }
+
+updateHeroControls();
 
 let scrollTicking = false;
 window.addEventListener('scroll', () => {
