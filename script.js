@@ -63,14 +63,26 @@ if (heroSlider && canTilt.matches) {
     const bounds = heroSlider.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
     const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    const activeImage = heroSlider.querySelector('.hero-slide.is-active .hero-image');
+    const activeSlide = heroSlider.querySelector('.hero-slide.is-active');
+    const activeImage = activeSlide?.querySelector('.hero-image');
     activeImage?.style.setProperty('--parallax-x', `${x * -12}px`);
     activeImage?.style.setProperty('--parallax-y', `${y * -10}px`);
+    const depthCard = activeSlide?.querySelector('.hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card');
+    depthCard?.style.setProperty('--float-x', `${x * 8}px`);
+    depthCard?.style.setProperty('--float-y', `${y * 7}px`);
+    depthCard?.style.setProperty('--float-rotate-x', `${y * -4}deg`);
+    depthCard?.style.setProperty('--float-rotate-y', `${x * 5}deg`);
   });
   heroSlider.addEventListener('pointerleave', () => {
     heroSlider.querySelectorAll('.hero-image').forEach((image) => {
       image.style.setProperty('--parallax-x', '0px');
       image.style.setProperty('--parallax-y', '0px');
+    });
+    heroSlider.querySelectorAll('.hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card').forEach((card) => {
+      card.style.setProperty('--float-x', '0px');
+      card.style.setProperty('--float-y', '0px');
+      card.style.setProperty('--float-rotate-x', '0deg');
+      card.style.setProperty('--float-rotate-y', '0deg');
     });
   });
 
@@ -79,8 +91,11 @@ if (heroSlider && canTilt.matches) {
       const bounds = card.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width - 0.5;
       const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-      card.style.setProperty('--tilt-x', `${x * 5}deg`);
-      card.style.setProperty('--tilt-y', `${y * -5}deg`);
+      card.style.setProperty('--tilt-x', `${x * 8}deg`);
+      card.style.setProperty('--tilt-y', `${y * -8}deg`);
+      const productImage = card.querySelector('.product-image');
+      productImage?.style.setProperty('--shine-x', `${(x + 0.5) * 100}%`);
+      productImage?.style.setProperty('--shine-y', `${(y + 0.5) * 100}%`);
     });
     card.addEventListener('pointerleave', () => {
       card.style.setProperty('--tilt-x', '0deg');

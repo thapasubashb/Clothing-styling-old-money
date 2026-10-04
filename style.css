@@ -101,7 +101,7 @@ button { border: 0; cursor: pointer; }
 .hero-dot.is-current { text-decoration: underline; text-underline-offset: 5px; }
 .hero-slide-count { padding-left: 12px; border-left: 1px solid rgba(239, 232, 216, .32); font-size: 9px; letter-spacing: .1em; }
 .hero-slide-count i { padding: 0 4px; color: #c1aa78; font-style: normal; }
-.hero-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, transform .9s ease; }
+.hero-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transform-style: preserve-3d; transition: opacity .9s ease, transform .9s ease; }
 .hero-slide.is-active { opacity: 1; visibility: visible; }
 .hero-image { position: absolute; inset: 0; animation: heroZoom 14s ease-out both; transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0); transition: transform .5s cubic-bezier(.2,.65,.2,1); will-change: transform; }
 .hero-bg-one { background-image: linear-gradient(90deg, rgba(28, 45, 36, .7) 0%, rgba(28, 45, 36, .12) 70%), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
@@ -110,16 +110,16 @@ button { border: 0; cursor: pointer; }
 .hero-bg-four { background-image: linear-gradient(90deg, rgba(51, 37, 37, .77) 0%, rgba(51, 37, 37, .2) 70%), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
 .hero-slide.theme-1 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(193, 170, 120, .12), transparent 43%), linear-gradient(0deg, rgba(25, 40, 32, .24), transparent 42%); content: ''; pointer-events: none; }
 .hero-slide.theme-1 .hero-copy { transform-style: preserve-3d; }
-.hero-slide.theme-1 .hero-detail-card { transform: translateZ(24px); box-shadow: 0 22px 55px rgba(12, 21, 17, .2); }
+.hero-slide.theme-1 .hero-detail-card { box-shadow: 0 22px 55px rgba(12, 21, 17, .2); }
 .hero-slide.theme-2 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(197, 169, 120, .15), transparent 48%), linear-gradient(0deg, rgba(44, 32, 23, .25), transparent 42%); content: ''; pointer-events: none; }
 .hero-slide.theme-2 .hero-copy { transform-style: preserve-3d; }
-.hero-slide.theme-2 .hero-fabric-card { transform: translateZ(28px); box-shadow: 0 24px 60px rgba(24, 17, 12, .3); }
+.hero-slide.theme-2 .hero-fabric-card { box-shadow: 0 24px 60px rgba(24, 17, 12, .3); }
 .hero-slide.theme-3 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(200, 185, 143, .13), transparent 47%), linear-gradient(0deg, rgba(24, 42, 37, .25), transparent 40%); content: ''; pointer-events: none; }
 .hero-slide.theme-3 .hero-copy { transform-style: preserve-3d; }
-.hero-slide.theme-3 .hero-lookbook-card { transform: translateZ(30px); box-shadow: 0 24px 60px rgba(13, 25, 22, .3); }
+.hero-slide.theme-3 .hero-lookbook-card { box-shadow: 0 24px 60px rgba(13, 25, 22, .3); }
 .hero-slide.theme-4 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(203, 183, 143, .13), transparent 48%), linear-gradient(0deg, rgba(43, 31, 32, .27), transparent 42%); content: ''; pointer-events: none; }
 .hero-slide.theme-4 .hero-copy { transform-style: preserve-3d; }
-.hero-slide.theme-4 .hero-wardrobe-card { transform: translateZ(30px); box-shadow: 0 24px 60px rgba(22, 15, 16, .3); }
+.hero-slide.theme-4 .hero-wardrobe-card { box-shadow: 0 24px 60px rgba(22, 15, 16, .3); }
 .hero-copy { position: relative; z-index: 1; width: min(650px, 80%); margin-left: 12vw; padding-top: 30px; animation: rise .8s ease both; }
 .hero-slide .hero-copy { color: var(--slide-ink); }
 .hero-slide .hero-intro { color: var(--slide-muted); }
@@ -199,19 +199,21 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .filter-button.active, .filter-button:hover { color: var(--ink); border-color: var(--red); }
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .product-card.is-hidden { display: none; }
-.product-image { position: relative; height: min(43vw, 590px); overflow: hidden; background-color: #ddd; background-position: center; background-size: cover; transition: transform .7s cubic-bezier(.2,.65,.2,1); }
+.product-image { position: relative; height: min(43vw, 590px); overflow: hidden; background-color: #ddd; background-position: center; background-size: cover; transform: translateZ(0); transition: transform .7s cubic-bezier(.2,.65,.2,1); }
+.product-image::before { position: absolute; z-index: 1; inset: 0; background: radial-gradient(circle at var(--shine-x, 50%) var(--shine-y, 50%), rgba(255, 250, 229, .34), transparent 35%); content: ''; opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+.product-card:hover .product-image::before { opacity: 1; }
 .product-image::after { position: absolute; inset: 0; background: rgba(20, 30, 30, 0); content: ''; transition: background .35s ease; }
 .product-card {
   padding: 10px;
   border: 1px solid rgba(28, 42, 45, 0.06);
   background: rgba(255, 255, 255, 0.35);
-  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(0);
+  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(0) scale(var(--card-scale, 1));
   transform-style: preserve-3d;
   transition: transform .4s cubic-bezier(.2,.65,.2,1), box-shadow .35s ease, border-color .35s ease;
   will-change: transform;
 }
 .product-card:hover {
-  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(-5px);
+  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(-5px) scale(var(--card-scale, 1));
   border-color: rgba(214, 178, 122, 0.4);
   box-shadow: 0 18px 38px rgba(28, 42, 45, 0.08);
 }
@@ -267,12 +269,12 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 
 .hero-slide { perspective: 1400px; }
 .hero-slide.is-active .hero-copy { animation: rise .8s ease both; }
-.hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card { transform: translateZ(24px); box-shadow: 0 22px 55px rgba(12, 21, 17, .2); transition: transform .6s cubic-bezier(.2,.65,.2,1), box-shadow .6s ease; }
+.hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card { transform: translate3d(var(--float-x, 0px), var(--float-y, 0px), 32px) rotateX(var(--float-rotate-x, 0deg)) rotateY(var(--float-rotate-y, 0deg)); transform-style: preserve-3d; transition: transform .35s cubic-bezier(.2,.65,.2,1), box-shadow .6s ease; will-change: transform; }
 .hero-slide.theme-1.is-active .hero-detail-card { animation: detailFloat 6s ease-in-out infinite; }
 .hero-slide.theme-2.is-active .hero-fabric-card { animation: detailFloat 6.5s ease-in-out infinite; }
 .hero-slide.theme-3.is-active .hero-lookbook-card { animation: detailFloat 7s ease-in-out infinite; }
 .hero-slide.theme-4.is-active .hero-wardrobe-card { animation: detailFloat 7.5s ease-in-out infinite; }
-.product-image { transform: translateZ(0); }
+.product-card { position: relative; }
 
 @keyframes detailFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
 
@@ -288,7 +290,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .js-enabled .reveal.is-visible { opacity: 1; transform: translateY(0); }
 .js-enabled .collection .product-card { opacity: 0; translate: 0 26px; transition: opacity .65s ease, translate .65s cubic-bezier(.2,.65,.2,1), transform .4s cubic-bezier(.2,.65,.2,1); }
 .js-enabled .collection.is-visible .product-card { opacity: 1; translate: 0 0; }
-.js-enabled .collection.is-visible .product-card:hover { transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(-5px); }
+.js-enabled .collection.is-visible .product-card:hover { transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg)) translateY(-5px) scale(var(--card-scale, 1)); }
 .js-enabled .collection.is-visible .product-card:nth-child(2) { transition-delay: .12s; }
 .js-enabled .collection.is-visible .product-card:nth-child(3) { transition-delay: .24s; }
 
