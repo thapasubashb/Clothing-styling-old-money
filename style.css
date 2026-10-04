@@ -90,7 +90,7 @@ button { border: 0; cursor: pointer; }
 }
 .hero-slide.theme-1 { --slide-bg: #293e33; --slide-accent: #c1aa78; --slide-accent-soft: rgba(193, 170, 120, 0.2); --slide-panel: rgba(28, 45, 36, 0.36); --slide-line: rgba(239, 232, 216, 0.38); }
 .hero-slide.theme-2 { --slide-bg: #392d23; --slide-accent: #c5a978; --slide-accent-soft: rgba(197, 169, 120, 0.2); --slide-panel: rgba(54, 40, 29, 0.38); --slide-line: rgba(245, 233, 214, 0.36); }
-.hero-slide.theme-3 { --slide-bg: #1a2b2d; --slide-accent: #d2bb8f; --slide-accent-soft: rgba(210, 187, 143, 0.2); --slide-panel: rgba(18, 38, 35, 0.3); --slide-line: rgba(241, 233, 219, 0.32); }
+.hero-slide.theme-3 { --slide-bg: #233b37; --slide-accent: #c8b98f; --slide-accent-soft: rgba(200, 185, 143, 0.2); --slide-panel: rgba(23, 43, 39, 0.4); --slide-line: rgba(241, 233, 219, 0.32); }
 .hero-slide.theme-4 { --slide-bg: #2a1f22; --slide-accent: #d9c4a2; --slide-accent-soft: rgba(217, 196, 162, 0.2); --slide-panel: rgba(46, 31, 35, 0.28); --slide-line: rgba(240, 232, 224, 0.34); }
 .hero-controls { position: absolute; z-index: 4; right: 5.5vw; bottom: 30px; display: flex; align-items: center; gap: 15px; padding: 9px 11px; border: 1px solid rgba(239, 232, 216, .28); background: rgba(31, 44, 36, .48); color: #f4eee2; backdrop-filter: blur(10px); }
 .hero-arrow { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid rgba(239, 232, 216, .38); border-radius: 50%; background: transparent; color: #f4eee2; font-size: 17px; transition: background .25s ease, transform .25s ease; }
@@ -106,7 +106,7 @@ button { border: 0; cursor: pointer; }
 .hero-image { position: absolute; inset: 0; animation: heroZoom 14s ease-out both; transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0); transition: transform .5s cubic-bezier(.2,.65,.2,1); will-change: transform; }
 .hero-bg-one { background-image: linear-gradient(90deg, rgba(28, 45, 36, .7) 0%, rgba(28, 45, 36, .12) 70%), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
 .hero-bg-two { background-image: linear-gradient(90deg, rgba(53, 40, 29, .76) 0%, rgba(53, 40, 29, .22) 70%), url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
-.hero-bg-three { background-image: linear-gradient(90deg, rgba(24, 33, 34, .68) 0%, rgba(24, 33, 34, .14) 70%), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
+.hero-bg-three { background-image: linear-gradient(90deg, rgba(27, 46, 41, .76) 0%, rgba(27, 46, 41, .19) 70%), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
 .hero-bg-four { background-image: linear-gradient(90deg, rgba(28, 42, 45, .7) 0%, rgba(28, 42, 45, .18) 70%), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
 .hero-slide.theme-1 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(193, 170, 120, .12), transparent 43%), linear-gradient(0deg, rgba(25, 40, 32, .24), transparent 42%); content: ''; pointer-events: none; }
 .hero-slide.theme-1 .hero-copy { transform-style: preserve-3d; }
@@ -114,6 +114,9 @@ button { border: 0; cursor: pointer; }
 .hero-slide.theme-2 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(197, 169, 120, .15), transparent 48%), linear-gradient(0deg, rgba(44, 32, 23, .25), transparent 42%); content: ''; pointer-events: none; }
 .hero-slide.theme-2 .hero-copy { transform-style: preserve-3d; }
 .hero-slide.theme-2 .hero-fabric-card { transform: translateZ(28px); box-shadow: 0 24px 60px rgba(24, 17, 12, .3); }
+.hero-slide.theme-3 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(200, 185, 143, .13), transparent 47%), linear-gradient(0deg, rgba(24, 42, 37, .25), transparent 40%); content: ''; pointer-events: none; }
+.hero-slide.theme-3 .hero-copy { transform-style: preserve-3d; }
+.hero-slide.theme-3 .hero-lookbook-card { transform: translateZ(30px); box-shadow: 0 24px 60px rgba(13, 25, 22, .3); }
 .hero-copy { position: relative; z-index: 1; width: min(650px, 80%); margin-left: 12vw; padding-top: 30px; animation: rise .8s ease both; }
 .hero-slide .hero-copy { color: var(--slide-ink); }
 .hero-slide .hero-intro { color: var(--slide-muted); }
@@ -264,6 +267,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card { transform: translateZ(24px); box-shadow: 0 22px 55px rgba(12, 21, 17, .2); transition: transform .6s cubic-bezier(.2,.65,.2,1), box-shadow .6s ease; }
 .hero-slide.theme-1.is-active .hero-detail-card { animation: detailFloat 6s ease-in-out infinite; }
 .hero-slide.theme-2.is-active .hero-fabric-card { animation: detailFloat 6.5s ease-in-out infinite; }
+.hero-slide.theme-3.is-active .hero-lookbook-card { animation: detailFloat 7s ease-in-out infinite; }
 .product-image { transform: translateZ(0); }
 
 @keyframes detailFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
@@ -354,11 +358,12 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .hero-slide.theme-1.is-active .hero-image, .hero-slide.theme-2.is-active .hero-image { transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04); }
+  .hero-slide.theme-1.is-active .hero-image, .hero-slide.theme-2.is-active .hero-image, .hero-slide.theme-3.is-active .hero-image { transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-slide.theme-1.is-active .hero-detail-card { animation: none; }
   .hero-slide.theme-2.is-active .hero-fabric-card { animation: none; }
+  .hero-slide.theme-3.is-active .hero-lookbook-card { animation: none; }
   .product-card { transform: none; }
 }
