@@ -63,7 +63,7 @@ if (heroSlider && canTilt.matches) {
     const bounds = heroSlider.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
     const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    const activeImage = heroSlider.querySelector('.hero-slide.is-active .hero-image');
+    const activeImage = heroSlider.querySelector('.hero-slide.theme-1.is-active .hero-image');
     activeImage?.style.setProperty('--parallax-x', `${x * -12}px`);
     activeImage?.style.setProperty('--parallax-y', `${y * -10}px`);
   });
