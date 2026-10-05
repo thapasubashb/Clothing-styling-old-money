@@ -259,22 +259,41 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .add-button { padding: 0 0 5px; background: transparent; border-bottom: 1px solid var(--red); color: var(--red); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; transition: color .2s ease, border-color .2s ease; }
 .add-button:hover, .add-button.is-added { border-color: var(--ink); color: var(--ink); }
 .pairing-guide { margin-top: 105px; padding: 58px 6vw 62px; background: #eee9dd; }
-.pairing-guide .eyebrow { margin-bottom: 14px; }
-.pairing-guide h3 { margin: 0 0 38px; font-family: var(--serif); font-size: clamp(30px, 4vw, 48px); font-weight: 500; }
-.pairing-swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 22px; }
-.pairing-swatches > div { display: grid; justify-items: start; gap: 8px; }
-.swatch-pair { display: flex; width: 74px; height: 24px; overflow: hidden; border: 1px solid rgba(38, 51, 43, .12); border-radius: 99px; }
-.swatch-pair::before, .swatch-pair::after { width: 50%; content: ''; }
-.swatch-ivory-sand::before { background: #f4efe5; } .swatch-ivory-sand::after { background: #c4ad8a; }
-.swatch-navy-ecru::before { background: #25394a; } .swatch-navy-ecru::after { background: #e7dfcf; }
-.swatch-sage-white::before { background: #8b967c; } .swatch-sage-white::after { background: #f5f3ed; }
-.swatch-sky-stone::before { background: #b7cbd1; } .swatch-sky-stone::after { background: #a89c88; }
-.swatch-oat-tobacco::before { background: #d3c2a6; } .swatch-oat-tobacco::after { background: #8c5d42; }
-.swatch-olive-cream::before { background: #626b4e; } .swatch-olive-cream::after { background: #eee7d8; }
-.swatch-charcoal-white::before { background: #444746; } .swatch-charcoal-white::after { background: #f7f4ec; }
-.swatch-blue-khaki::before { background: #48677d; } .swatch-blue-khaki::after { background: #b9ab8e; }
-.pairing-swatches strong { font-size: 11px; font-weight: 500; letter-spacing: .04em; }
-.pairing-swatches small { color: var(--muted); font-size: 9px; letter-spacing: .04em; }
+.pairing-guide > .eyebrow { margin-bottom: 14px; }
+.pairing-guide > h3 { margin: 0 0 14px; font-family: var(--serif); font-size: clamp(30px, 4vw, 48px); font-weight: 500; line-height: .98; }
+.pairing-guide > h3 i { color: var(--red); font-weight: 400; }
+.pairing-intro { max-width: 560px; margin-bottom: 36px; color: #5d6868; font-family: var(--serif); font-size: 18px; line-height: 1.25; }
+.mix-match-layout { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.3fr); gap: 28px; align-items: stretch; }
+.outfit-picker, .combination-board { min-width: 0; padding: 24px; background: rgba(248, 245, 238, .72); }
+.outfit-picker > .eyebrow, .combination-board > .eyebrow { margin-bottom: 17px; }
+.outfit-preview { display: grid; grid-template-columns: 1fr; min-height: 310px; background: #e9e3d6; }
+.garment-stage { display: flex; min-height: 205px; align-items: center; justify-content: center; gap: 22px; padding: 18px; background: linear-gradient(145deg, #f2eee5, #ded7c9); }
+.shirt-garment { width: 102px; height: 98px; color: var(--shirt-color, #f7f5ef); filter: drop-shadow(0 8px 8px rgba(38, 51, 43, .14)); }
+.trouser-garment { width: 72px; height: 108px; color: var(--trouser-color, #c4ad8a); filter: drop-shadow(0 8px 8px rgba(38, 51, 43, .14)); }
+.outfit-preview-copy { padding: 16px 19px 18px; }
+.outfit-preview-copy .eyebrow { margin-bottom: 6px; font-size: 8px; }
+.outfit-preview-copy h4 { margin: 0 0 6px; font-family: var(--serif); font-size: 24px; font-weight: 600; }
+.outfit-preview-copy > p:last-child { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+.random-outfit-button { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-top: 14px; padding: 14px 16px; background: var(--navy); color: var(--paper); font-size: 9px; letter-spacing: .13em; text-align: left; text-transform: uppercase; transition: background .25s ease; }
+.random-outfit-button:hover { background: #405642; }
+.random-outfit-button span { color: #d9a19a; font-size: 15px; }
+.combination-table-wrap { overflow-x: auto; overscroll-behavior-x: contain; }
+.combination-table { width: 100%; min-width: 0; border-collapse: collapse; table-layout: fixed; }
+.combination-table th { padding: 7px 4px; color: var(--muted); font-size: 8px; font-weight: 500; letter-spacing: .07em; text-align: center; text-transform: uppercase; }
+.combination-table th:first-child { width: 94px; text-align: left; }
+.combination-table thead th { height: 42px; border-bottom: 1px solid var(--line); }
+.combination-table tbody th { border-bottom: 1px solid rgba(38, 51, 43, .08); }
+.combination-column-label, .combination-row-label { display: flex; align-items: center; justify-content: center; gap: 6px; }
+.combination-column-label { flex-direction: column; gap: 3px; }
+.combination-row-label { justify-content: flex-start; }
+.color-dot { display: inline-block; width: 12px; height: 12px; flex: 0 0 12px; border: 1px solid rgba(38, 51, 43, .18); border-radius: 50%; background: var(--swatch-color); }
+.combination-cell { padding: 3px; }
+.combination-button { display: flex; width: 100%; height: 30px; overflow: hidden; padding: 0; border: 1px solid rgba(38, 51, 43, .12); background: transparent; transition: transform .2s ease, outline-color .2s ease; }
+.combination-button span { width: 50%; background: var(--shirt-color); }
+.combination-button span + span { background: var(--trouser-color); }
+.combination-button:hover, .combination-button:focus-visible { z-index: 1; outline: 2px solid var(--red); outline-offset: 1px; transform: scale(1.05); }
+.combination-button.is-selected { outline: 2px solid var(--ink); outline-offset: 1px; }
+.combination-note { margin: 14px 0 0; color: var(--muted); font-size: 9px; letter-spacing: .03em; line-height: 1.5; }
 .center-link { display: flex; width: max-content; margin: 65px auto 0; }
 
 .feature-story { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 660px; background: var(--navy); color: #f8f2e9; }
@@ -415,8 +434,23 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .product-grid { grid-template-columns: 1fr; gap: 48px; }
   .product-image { height: 118vw; max-height: 550px; }
   .pairing-guide { margin-top: 75px; padding: 38px 7vw 42px; }
-  .pairing-guide h3 { margin-bottom: 26px; }
-  .pairing-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .pairing-guide > h3 { margin-bottom: 12px; }
+  .pairing-intro { margin-bottom: 24px; font-size: 16px; }
+  .mix-match-layout { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .outfit-picker, .combination-board { padding: 17px; }
+  .outfit-preview { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); min-height: 190px; }
+  .garment-stage { min-height: 190px; gap: 4px; padding: 10px 4px; }
+  .shirt-garment { width: 70px; height: 75px; }
+  .trouser-garment { width: 52px; height: 84px; }
+  .outfit-preview-copy { padding: 12px; }
+  .outfit-preview-copy h4 { font-size: 21px; }
+  .combination-table { min-width: 0; }
+  .combination-table th { padding: 5px 1px; font-size: 6px; letter-spacing: 0; overflow-wrap: anywhere; }
+  .combination-table th:first-child { width: 58px; }
+  .combination-column-label { gap: 2px; }
+  .combination-column-label > span:last-child { max-width: 100%; line-height: 1.05; overflow-wrap: anywhere; }
+  .combination-cell { padding: 2px 1px; }
+  .combination-button { height: 24px; }
   .product-meta h3 { font-size: 22px; }
   .product-meta p { max-width: 200px; line-height: 1.5; }
   .feature-story { grid-template-columns: 1fr; }

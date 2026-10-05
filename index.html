@@ -272,17 +272,41 @@
                 </article>
             </div>
             <aside class="pairing-guide" id="pairing-guide">
-                <p class="eyebrow">A simple rule: keep the colours quiet</p>
-                <h3>Eight pairings that always feel considered.</h3>
-                <div class="pairing-swatches">
-                    <div><span class="swatch-pair swatch-ivory-sand"></span><strong>Ivory + sand</strong><small>Easy, head to toe</small></div>
-                    <div><span class="swatch-pair swatch-navy-ecru"></span><strong>Navy + ecru</strong><small>Smart without trying</small></div>
-                    <div><span class="swatch-pair swatch-sage-white"></span><strong>Sage + white</strong><small>Fresh for warm days</small></div>
-                    <div><span class="swatch-pair swatch-sky-stone"></span><strong>Sky + stone</strong><small>A lighter office look</small></div>
-                    <div><span class="swatch-pair swatch-oat-tobacco"></span><strong>Oat + tobacco</strong><small>Warm, tonal layers</small></div>
-                    <div><span class="swatch-pair swatch-olive-cream"></span><strong>Olive + cream</strong><small>Grounded and relaxed</small></div>
-                    <div><span class="swatch-pair swatch-charcoal-white"></span><strong>Charcoal + white</strong><small>A clean contrast</small></div>
-                    <div><span class="swatch-pair swatch-blue-khaki"></span><strong>Blue + khaki</strong><small>A reliable weekend pair</small></div>
+                <p class="eyebrow">The no-clash colour edit</p>
+                <h3>Six shirts. Six trousers.<br><i>Every combination works.</i></h3>
+                <p class="pairing-intro">Choose any shirt colour with any trouser colour in this considered palette. Tap a combination below, or let us pick one for you.</p>
+                <div class="mix-match-layout">
+                    <div class="outfit-picker">
+                        <p class="eyebrow">Your outfit</p>
+                        <div class="outfit-preview" aria-live="polite">
+                            <div class="garment-stage" aria-hidden="true">
+                                <svg class="shirt-garment" viewBox="0 0 120 110">
+                                    <path d="M39 10 51 4h18l12 6 27 17-13 22-15-9v62H40V40l-15 9-13-22L39 10Z" fill="currentColor"/>
+                                    <path d="m51 4 9 13 9-13M60 17v85" fill="none" stroke="rgba(38,51,43,.3)" stroke-width="2"/>
+                                </svg>
+                                <svg class="trouser-garment" viewBox="0 0 90 120">
+                                    <path d="M16 8h58l-5 43-3 61H43l-3-45-3 45H14l-2-61-4-43h8Z" fill="currentColor"/>
+                                    <path d="M16 9h58M40 10v57" fill="none" stroke="rgba(38,51,43,.3)" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="outfit-preview-copy">
+                                <p class="eyebrow">A considered combination</p>
+                                <h4 id="outfit-name">White shirt / Sand trousers</h4>
+                                <p id="outfit-tip">Easy contrast for a relaxed, well-dressed look.</p>
+                            </div>
+                        </div>
+                        <button class="random-outfit-button" type="button" id="random-outfit">Pick a random outfit <span aria-hidden="true">↗</span></button>
+                    </div>
+                    <div class="combination-board">
+                        <p class="eyebrow">36 easy combinations</p>
+                        <div class="combination-table-wrap">
+                            <table class="combination-table" aria-label="Shirt and trouser colour combinations">
+                                <thead></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <p class="combination-note">Rows are shirts. Columns are trousers. Every square is a safe pairing.</p>
+                    </div>
                 </div>
             </aside>
             <a class="center-link text-link" href="#collection">Back to the looks <span>-></span></a>

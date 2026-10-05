@@ -59,6 +59,128 @@ if (heroSlides.length > 1) {
   });
 }
 
+const shirtColors = [
+  { name: 'White', hex: '#f4f1e8', family: 'light' },
+  { name: 'Ivory', hex: '#e8dfcf', family: 'light' },
+  { name: 'Sky blue', hex: '#b9d0d5', family: 'blue' },
+  { name: 'Sage', hex: '#a1aa91', family: 'green' },
+  { name: 'Chambray', hex: '#718b9a', family: 'blue' },
+  { name: 'Navy', hex: '#314858', family: 'dark' },
+];
+const trouserColors = [
+  { name: 'Sand', hex: '#c4ad8a', family: 'light' },
+  { name: 'Stone', hex: '#a99c89', family: 'light' },
+  { name: 'Ecru', hex: '#e7dfcf', family: 'light' },
+  { name: 'Olive', hex: '#73765b', family: 'green' },
+  { name: 'Navy', hex: '#344959', family: 'dark' },
+  { name: 'Charcoal', hex: '#50514e', family: 'dark' },
+];
+const pairingGuide = document.querySelector('.pairing-guide');
+
+if (pairingGuide) {
+  const combinationTable = pairingGuide.querySelector('.combination-table');
+  const combinationHead = combinationTable.querySelector('thead');
+  const combinationBody = combinationTable.querySelector('tbody');
+  const outfitName = pairingGuide.querySelector('#outfit-name');
+  const outfitTip = pairingGuide.querySelector('#outfit-tip');
+  const randomOutfitButton = pairingGuide.querySelector('#random-outfit');
+  const combinationButtons = [];
+  let selectedShirt = 0;
+  let selectedTrouser = 0;
+
+  const makeColorLabel = (color, className) => {
+    const label = document.createElement('span');
+    label.className = className;
+    const dot = document.createElement('span');
+    dot.className = 'color-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    dot.style.setProperty('--swatch-color', color.hex);
+    const name = document.createElement('span');
+    name.textContent = color.name;
+    label.append(dot, name);
+    return label;
+  };
+
+  const headerRow = document.createElement('tr');
+  const cornerHeader = document.createElement('th');
+  cornerHeader.scope = 'col';
+  cornerHeader.textContent = 'Shirt ↓';
+  headerRow.append(cornerHeader);
+  trouserColors.forEach((color) => {
+    const header = document.createElement('th');
+    header.scope = 'col';
+    header.append(makeColorLabel(color, 'combination-column-label'));
+    headerRow.append(header);
+  });
+  combinationHead.append(headerRow);
+
+  shirtColors.forEach((shirt, shirtIndex) => {
+    const row = document.createElement('tr');
+    const rowHeader = document.createElement('th');
+    rowHeader.scope = 'row';
+    rowHeader.append(makeColorLabel(shirt, 'combination-row-label'));
+    row.append(rowHeader);
+
+    trouserColors.forEach((trouser, trouserIndex) => {
+      const cell = document.createElement('td');
+      cell.className = 'combination-cell';
+      const button = document.createElement('button');
+      button.className = 'combination-button';
+      button.type = 'button';
+      button.setAttribute('aria-label', `Pair ${shirt.name} shirt with ${trouser.name} trousers`);
+      button.setAttribute('aria-pressed', 'false');
+      button.style.setProperty('--shirt-color', shirt.hex);
+      button.style.setProperty('--trouser-color', trouser.hex);
+      button.dataset.shirtIndex = shirtIndex;
+      button.dataset.trouserIndex = trouserIndex;
+      button.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span>';
+      button.addEventListener('click', () => {
+        selectedShirt = shirtIndex;
+        selectedTrouser = trouserIndex;
+        updateOutfitPreview();
+      });
+      combinationButtons.push(button);
+      cell.append(button);
+      row.append(cell);
+    });
+
+    combinationBody.append(row);
+  });
+
+  function updateOutfitPreview() {
+    const shirt = shirtColors[selectedShirt];
+    const trouser = trouserColors[selectedTrouser];
+    const isTonal = shirt.family === trouser.family;
+    const preview = pairingGuide.querySelector('.garment-stage');
+    preview.style.setProperty('--shirt-color', shirt.hex);
+    preview.style.setProperty('--trouser-color', trouser.hex);
+    outfitName.textContent = `${shirt.name} shirt / ${trouser.name} trousers`;
+    outfitTip.textContent = isTonal
+      ? 'A tonal pairing. Mix linen, cotton, or a subtle texture for definition.'
+      : 'An easy colour balance. Finish simply with tan or dark-brown leather.';
+
+    combinationButtons.forEach((button) => {
+      const isSelected = Number(button.dataset.shirtIndex) === selectedShirt
+        && Number(button.dataset.trouserIndex) === selectedTrouser;
+      button.classList.toggle('is-selected', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+  }
+
+  randomOutfitButton?.addEventListener('click', () => {
+    const choices = combinationButtons.filter((button) => (
+      Number(button.dataset.shirtIndex) !== selectedShirt
+      || Number(button.dataset.trouserIndex) !== selectedTrouser
+    ));
+    const choice = choices[Math.floor(Math.random() * choices.length)];
+    selectedShirt = Number(choice.dataset.shirtIndex);
+    selectedTrouser = Number(choice.dataset.trouserIndex);
+    updateOutfitPreview();
+  });
+
+  updateOutfitPreview();
+}
+
 const heroSlider = document.querySelector('.hero-slider');
 const canTilt = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
 if (heroSlider && canTilt.matches) {
