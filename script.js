@@ -30,6 +30,7 @@ const showSlide = (index) => {
   if (!heroSlides.length) return;
 
   heroSection?.classList.toggle('is-image-slide', index === 0);
+  heroSection?.classList.toggle('is-lookbook-slide', index === 1);
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle('is-active', slideIndex === index);
     heroDots[slideIndex]?.classList.toggle('is-current', slideIndex === index);
@@ -67,8 +68,10 @@ if (heroSlider && canTilt.matches) {
     const y = (event.clientY - bounds.top) / bounds.height - 0.5;
     const activeSlide = heroSlider.querySelector('.hero-slide.is-active');
     const activeImage = activeSlide?.querySelector('.hero-image');
-    activeImage?.style.setProperty('--parallax-x', `${x * -12}px`);
-    activeImage?.style.setProperty('--parallax-y', `${y * -10}px`);
+    if (activeSlide !== heroSlides[0]) {
+      activeImage?.style.setProperty('--parallax-x', `${x * -12}px`);
+      activeImage?.style.setProperty('--parallax-y', `${y * -10}px`);
+    }
     const depthCard = activeSlide?.querySelector('.hero-detail-card, .hero-fabric-card, .hero-lookbook-card, .hero-wardrobe-card');
     depthCard?.style.setProperty('--float-x', `${x * 8}px`);
     depthCard?.style.setProperty('--float-y', `${y * 7}px`);
