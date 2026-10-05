@@ -389,4 +389,17 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .footer-brand { grid-column: span 2; }
   .footer-about { grid-column: span 2; }
   .site-footer p { grid-column: span 2; }
-  .footer-links { grid-column: span 
+  .footer-links { grid-column: span 2; flex-wrap: wrap; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-slide.theme-1.is-active .hero-image, .hero-slide.theme-2.is-active .hero-image, .hero-slide.theme-3.is-active .hero-image, .hero-slide.theme-4.is-active .hero-image { transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.theme-1.is-active .hero-detail-card { animation: none; }
+  .hero-slide.theme-2.is-active .hero-fabric-card { animation: none; }
+  .hero-slide.theme-3.is-active .hero-lookbook-card { animation: none; }
+  .hero-slide.theme-4.is-active .hero-wardrobe-card { animation: none; }
+  .product-card { transform: none; }
+}
