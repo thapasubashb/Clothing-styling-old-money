@@ -110,7 +110,7 @@ button { border: 0; cursor: pointer; }
 .hero-bg-four { background-image: linear-gradient(90deg, rgba(51, 37, 37, .77) 0%, rgba(51, 37, 37, .2) 70%), url('assets/menswear-look-04.svg'); background-position: center 35%; background-size: cover; }
 .hero-slide.theme-1 .hero-image::after { content: none; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
-.theme-1 { background: #e1d1c2; }
+.hero.is-image-slide .hero-slide.theme-1 { background: #e1d1c2; color: #111; }
 .hero.is-image-slide .hero-slide:first-child::after { content: none; }
 .theme-2 .hero-copy { width: min(34%, 440px); margin-left: 8vw; padding-top: 70px; }
 .theme-2 .hero-copy h1 { font-size: clamp(48px, 5.5vw, 82px); }
