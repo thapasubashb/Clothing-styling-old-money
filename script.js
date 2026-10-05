@@ -65,6 +65,7 @@ const shirtColors = [
   { name: 'Sky blue', hex: '#b9d0d5', family: 'blue' },
   { name: 'Sage', hex: '#a1aa91', family: 'green' },
   { name: 'Chambray', hex: '#718b9a', family: 'blue' },
+  { name: 'Dusty rose', hex: '#d9b9b0', family: 'warm' },
   { name: 'Navy', hex: '#314858', family: 'dark' },
 ];
 const trouserColors = [
@@ -72,6 +73,7 @@ const trouserColors = [
   { name: 'Stone', hex: '#a99c89', family: 'light' },
   { name: 'Ecru', hex: '#e7dfcf', family: 'light' },
   { name: 'Olive', hex: '#73765b', family: 'green' },
+  { name: 'Tobacco', hex: '#8c5d42', family: 'warm' },
   { name: 'Navy', hex: '#344959', family: 'dark' },
   { name: 'Charcoal', hex: '#50514e', family: 'dark' },
 ];

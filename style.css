@@ -269,7 +269,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .palette-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
 .palette-heading .eyebrow { margin: 0; }
 .palette-heading h4 { margin: 0; font-family: var(--serif); font-size: 24px; font-weight: 600; }
-.color-options { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.color-options { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
 .color-option { display: grid; min-width: 0; gap: 8px; justify-items: center; padding: 9px 5px 8px; border: 1px solid rgba(38, 51, 43, .09); background: rgba(255, 255, 255, .42); color: var(--ink); transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .color-option:hover { transform: translateY(-2px); border-color: rgba(120, 68, 60, .5); }
 .color-option.is-selected { border-color: var(--red); background: #fffdf8; box-shadow: inset 0 -2px var(--red); }
@@ -448,7 +448,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .color-palette, .outfit-picker, .combination-board { padding: 16px; }
   .palette-heading { display: block; }
   .palette-heading .eyebrow { margin-bottom: 6px; }
-  .color-options { gap: 6px; }
+  .color-options { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
   .color-option { gap: 6px; padding: 7px 3px; }
   .color-option-swatch { height: 28px; }
   .color-option-name { font-size: 8px; }
