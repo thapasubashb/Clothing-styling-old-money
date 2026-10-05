@@ -104,11 +104,27 @@ button { border: 0; cursor: pointer; }
 .hero-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transform-style: preserve-3d; transition: opacity .9s ease, transform .9s ease; }
 .hero-slide.is-active { opacity: 1; visibility: visible; }
 .hero-image { position: absolute; inset: 0; animation: heroZoom 14s ease-out both; transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0); transition: transform .5s cubic-bezier(.2,.65,.2,1); will-change: transform; }
-.hero-bg-one { background-image: linear-gradient(90deg, rgba(28, 45, 36, .7) 0%, rgba(28, 45, 36, .12) 70%), url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&crop=faces&w=1800&h=1100&q=85'); background-position: center 35%; background-size: cover; }
-.hero-bg-two { background-image: linear-gradient(90deg, rgba(53, 40, 29, .76) 0%, rgba(53, 40, 29, .22) 70%), url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
-.hero-bg-three { background-image: linear-gradient(90deg, rgba(27, 46, 41, .76) 0%, rgba(27, 46, 41, .19) 70%), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
-.hero-bg-four { background-image: linear-gradient(90deg, rgba(51, 37, 37, .77) 0%, rgba(51, 37, 37, .2) 70%), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1800&q=85'); background-position: center 35%; background-size: cover; }
-.hero-slide.theme-1 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(193, 170, 120, .12), transparent 43%), linear-gradient(0deg, rgba(25, 40, 32, .24), transparent 42%); content: ''; pointer-events: none; }
+.hero-bg-one { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-bg-two { background: radial-gradient(ellipse at 78% 50%, rgba(180, 154, 108, .2), transparent 48%), linear-gradient(115deg, #27372f, #463829); }
+.hero-bg-three { background-image: linear-gradient(90deg, rgba(27, 46, 41, .76) 0%, rgba(27, 46, 41, .19) 70%), url('assets/menswear-look-03.svg'); background-position: center 35%; background-size: cover; }
+.hero-bg-four { background-image: linear-gradient(90deg, rgba(51, 37, 37, .77) 0%, rgba(51, 37, 37, .2) 70%), url('assets/menswear-look-04.svg'); background-position: center 35%; background-size: cover; }
+.hero-slide.theme-1 .hero-image::after { content: none; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+.theme-1 { background: #e1d1c2; }
+.hero.is-image-slide .hero-slide:first-child::after { content: none; }
+.theme-2 .hero-copy { width: min(34%, 440px); margin-left: 8vw; padding-top: 70px; }
+.theme-2 .hero-copy h1 { font-size: clamp(48px, 5.5vw, 82px); }
+.theme-2 .hero-intro { max-width: 290px; }
+.theme-2 .hero-note { display: none; }
+.outfit-gallery { position: absolute; z-index: 2; top: 48px; right: 0; bottom: 62px; width: 59%; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.outfit-track { display: flex; width: max-content; height: 100%; animation: lookbookTravel 42s linear infinite; }
+.outfit-gallery:hover .outfit-track { animation-play-state: paused; }
+.outfit-group { display: flex; height: 100%; gap: 18px; padding-right: 18px; }
+.outfit-card { display: flex; width: clamp(190px, 20vw, 270px); height: 100%; flex: 0 0 auto; flex-direction: column; overflow: hidden; border: 1px solid rgba(248, 242, 233, .24); background: rgba(248, 242, 233, .96); color: #293e33; box-shadow: 0 18px 38px rgba(12, 21, 17, .2); }
+.outfit-card img { display: block; width: 100%; min-height: 0; flex: 1; object-fit: cover; }
+.outfit-caption { display: grid; gap: 5px; padding: 11px 14px 13px; }
+.outfit-caption span { color: #8d7958; font-size: 8px; letter-spacing: .16em; }
+.outfit-caption strong { font-family: var(--serif); font-size: 19px; font-weight: 500; }
 .hero-slide.theme-1 .hero-copy { transform-style: preserve-3d; }
 .hero-slide.theme-1 .hero-detail-card { box-shadow: 0 22px 55px rgba(12, 21, 17, .2); }
 .hero-slide.theme-2 .hero-image::after { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(197, 169, 120, .15), transparent 48%), linear-gradient(0deg, rgba(44, 32, 23, .25), transparent 42%); content: ''; pointer-events: none; }
@@ -219,9 +235,9 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 }
 .product-card:hover .product-image { transform: translateZ(22px) scale(1.025); }
 .product-card:hover .product-image::after { background: rgba(20, 30, 30, .08); }
-.product-image-one { background-image: url('https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=900&q=85'); }
-.product-image-two { background-image: url('https://images.unsplash.com/photo-1610652492500-ded49ceeb378?auto=format&fit=crop&w=900&q=85'); }
-.product-image-three { background-image: url('https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=85'); }
+.product-image-one { background-image: url('assets/menswear-look-01.svg'); }
+.product-image-two { background-image: url('assets/menswear-look-02.svg'); }
+.product-image-three { background-image: url('assets/menswear-look-04.svg'); }
 .product-tag { position: absolute; z-index: 1; top: 17px; left: 17px; padding: 7px 10px; background: var(--paper); color: var(--red); font-size: 9px; letter-spacing: .13em; text-transform: uppercase; }
 .heart-button { position: absolute; z-index: 1; top: 14px; right: 15px; width: 30px; height: 30px; background: rgba(251, 250, 246, .86); border-radius: 50%; color: var(--ink); font-family: Georgia, serif; font-size: 21px; line-height: 30px; }
 .heart-button:hover { color: var(--red); }
@@ -237,7 +253,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 .feature-story { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 660px; background: var(--navy); color: #f8f2e9; }
 .story-image { min-height: 500px; transition: transform 1s cubic-bezier(.2,.65,.2,1); }
 .story-image:hover { transform: scale(1.025); }
-.image-two { background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85'); background-position: center; background-size: cover; }
+.image-two { background-image: url('assets/menswear-look-03.svg'); background-position: center; background-size: cover; }
 .story-copy { align-self: center; padding: 10vw; }
 .story-copy h2 { margin-bottom: 34px; }
 .story-copy > p:not(.eyebrow) { max-width: 320px; margin-bottom: 33px; color: #d9dfd9; }
@@ -285,6 +301,7 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
 @keyframes bagItemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes detailIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cueLine { 0%, 100% { width: 20px; opacity: .45; } 50% { width: 42px; opacity: 1; } }
+@keyframes lookbookTravel { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 .js-enabled .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.65,.2,1); }
 .js-enabled .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -310,6 +327,9 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .bag-button { margin-left: auto; margin-right: 20px; }
   .bag-drawer { padding: 32px 24px 24px; }
   .hero { min-height: 610px; align-items: flex-end; }
+  .hero.is-image-slide { min-height: 0; }
+  .hero.is-image-slide .hero-slider { height: 52.2vw; min-height: 0; }
+  .hero.is-image-slide .hero-image { object-fit: contain; }
   .hero-controls { right: 6vw; bottom: 17px; gap: 7px; padding: 6px; }
   .hero-pagination { gap: 1px; }
   .hero-dot { padding: 5px; font-size: 8px; }
@@ -328,6 +348,15 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .hero-slide-label { left: 4vw; }
   .hero-fabric-card { right: 8vw; bottom: 9%; width: 145px; padding: 13px; }
   .hero-fabric-card strong { font-size: 22px; }
+  .theme-2 .hero-copy { width: 88%; margin: 0 6vw; padding-top: 26px; }
+  .theme-2 .hero-copy .eyebrow { margin-bottom: 13px; }
+  .theme-2 .hero-copy h1 { margin-bottom: 17px; font-size: clamp(40px, 11vw, 64px); }
+  .theme-2 .hero-intro { max-width: 310px; margin-bottom: 19px; font-size: 16px; }
+  .outfit-gallery { top: auto; right: 0; bottom: 62px; left: 0; width: 100%; height: 235px; }
+  .outfit-group { gap: 12px; padding-right: 12px; }
+  .outfit-card { width: 156px; }
+  .outfit-caption { gap: 4px; padding: 8px 10px 10px; }
+  .outfit-caption strong { font-size: 17px; }
   .hero-slide:nth-child(3)::after { top: 7%; right: 7vw; bottom: 7%; width: 46%; }
   .hero-dayline { right: 8vw; bottom: 22%; }
   .hero-dayline i { width: 48px; }
@@ -360,17 +389,4 @@ h2 { margin-bottom: 0; font-size: clamp(54px, 6vw, 92px); }
   .footer-brand { grid-column: span 2; }
   .footer-about { grid-column: span 2; }
   .site-footer p { grid-column: span 2; }
-  .footer-links { grid-column: span 2; flex-wrap: wrap; }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .hero-slide.theme-1.is-active .hero-image, .hero-slide.theme-2.is-active .hero-image, .hero-slide.theme-3.is-active .hero-image, .hero-slide.theme-4.is-active .hero-image { transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1.04); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-slide.theme-1.is-active .hero-detail-card { animation: none; }
-  .hero-slide.theme-2.is-active .hero-fabric-card { animation: none; }
-  .hero-slide.theme-3.is-active .hero-lookbook-card { animation: none; }
-  .hero-slide.theme-4.is-active .hero-wardrobe-card { animation: none; }
-  .product-card { transform: none; }
-}
+  .footer-links { grid-column: span 

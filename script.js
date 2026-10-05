@@ -23,11 +23,13 @@ const heroPrevButton = document.querySelector('.hero-prev-button');
 const heroNextButton = document.querySelector('.hero-next-button');
 const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
 const heroSlideCount = document.querySelector('.hero-slide-count');
+const heroSection = document.querySelector('.hero');
 let currentSlideIndex = 0;
 
 const showSlide = (index) => {
   if (!heroSlides.length) return;
 
+  heroSection?.classList.toggle('is-image-slide', index === 0);
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle('is-active', slideIndex === index);
     heroDots[slideIndex]?.classList.toggle('is-current', slideIndex === index);
