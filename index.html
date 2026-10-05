@@ -274,10 +274,32 @@
             <aside class="pairing-guide" id="pairing-guide">
                 <p class="eyebrow">The no-clash colour edit</p>
                 <h3>Six shirts. Six trousers.<br><i>Every combination works.</i></h3>
-                <p class="pairing-intro">Choose any shirt colour with any trouser colour in this considered palette. Tap a combination below, or let us pick one for you.</p>
+                <p class="pairing-intro">See each colour on its own first, then explore every shirt-and-trouser pairing. Every combination in this palette is designed to work.</p>
                 <div class="mix-match-layout">
+                    <div class="color-palettes">
+                        <section class="color-palette" aria-labelledby="shirt-palette-title">
+                            <div class="palette-heading">
+                                <p class="eyebrow">01 / Choose a top</p>
+                                <h4 id="shirt-palette-title">Shirt colours</h4>
+                            </div>
+                            <div class="color-options shirt-colors" aria-label="Shirt colour options"></div>
+                        </section>
+                        <section class="color-palette" aria-labelledby="trouser-palette-title">
+                            <div class="palette-heading">
+                                <p class="eyebrow">02 / Choose a bottom</p>
+                                <h4 id="trouser-palette-title">Trouser colours</h4>
+                            </div>
+                            <div class="color-options trouser-colors" aria-label="Trouser colour options"></div>
+                        </section>
+                    </div>
                     <div class="outfit-picker">
-                        <p class="eyebrow">Your outfit</p>
+                        <div class="outfit-picker-heading">
+                            <div>
+                                <p class="eyebrow">Your outfit</p>
+                                <h4 id="outfit-name">White shirt / Sand trousers</h4>
+                            </div>
+                            <button class="random-outfit-button" type="button" id="random-outfit">Pick a random outfit <span aria-hidden="true">↗</span></button>
+                        </div>
                         <div class="outfit-preview" aria-live="polite">
                             <div class="garment-stage" aria-hidden="true">
                                 <svg class="shirt-garment" viewBox="0 0 120 110">
@@ -289,23 +311,13 @@
                                     <path d="M16 9h58M40 10v57" fill="none" stroke="rgba(38,51,43,.3)" stroke-width="2"/>
                                 </svg>
                             </div>
-                            <div class="outfit-preview-copy">
-                                <p class="eyebrow">A considered combination</p>
-                                <h4 id="outfit-name">White shirt / Sand trousers</h4>
-                                <p id="outfit-tip">Easy contrast for a relaxed, well-dressed look.</p>
-                            </div>
+                            <p id="outfit-tip">Easy contrast for a relaxed, well-dressed look.</p>
                         </div>
-                        <button class="random-outfit-button" type="button" id="random-outfit">Pick a random outfit <span aria-hidden="true">↗</span></button>
                     </div>
                     <div class="combination-board">
                         <p class="eyebrow">36 easy combinations</p>
-                        <div class="combination-table-wrap">
-                            <table class="combination-table" aria-label="Shirt and trouser colour combinations">
-                                <thead></thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <p class="combination-note">Rows are shirts. Columns are trousers. Every square is a safe pairing.</p>
+                        <p class="combination-intro">Each card clearly shows the shirt colour first and the matching trouser colour second. Select any pairing to preview it above.</p>
+                        <div class="outfit-combinations" aria-label="All 36 shirt and trouser combinations"></div>
                     </div>
                 </div>
             </aside>

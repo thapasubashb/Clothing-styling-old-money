@@ -78,54 +78,53 @@ const trouserColors = [
 const pairingGuide = document.querySelector('.pairing-guide');
 
 if (pairingGuide) {
-  const combinationTable = pairingGuide.querySelector('.combination-table');
-  const combinationHead = combinationTable.querySelector('thead');
-  const combinationBody = combinationTable.querySelector('tbody');
+  const shirtPalette = pairingGuide.querySelector('.shirt-colors');
+  const trouserPalette = pairingGuide.querySelector('.trouser-colors');
+  const combinations = pairingGuide.querySelector('.outfit-combinations');
   const outfitName = pairingGuide.querySelector('#outfit-name');
   const outfitTip = pairingGuide.querySelector('#outfit-tip');
   const randomOutfitButton = pairingGuide.querySelector('#random-outfit');
   const combinationButtons = [];
+  const shirtButtons = [];
+  const trouserButtons = [];
   let selectedShirt = 0;
   let selectedTrouser = 0;
 
-  const makeColorLabel = (color, className) => {
-    const label = document.createElement('span');
-    label.className = className;
-    const dot = document.createElement('span');
-    dot.className = 'color-dot';
-    dot.setAttribute('aria-hidden', 'true');
-    dot.style.setProperty('--swatch-color', color.hex);
+  const makePaletteButton = (color, index, garment) => {
+    const button = document.createElement('button');
+    button.className = 'color-option';
+    button.type = 'button';
+    button.setAttribute('aria-label', `Select ${color.name} ${garment} colour`);
+    button.setAttribute('aria-pressed', 'false');
+    button.style.setProperty('--swatch-color', color.hex);
+    button.innerHTML = '<span class="color-option-swatch" aria-hidden="true"></span>';
     const name = document.createElement('span');
+    name.className = 'color-option-name';
     name.textContent = color.name;
-    label.append(dot, name);
-    return label;
+    button.append(name);
+    button.addEventListener('click', () => {
+      if (garment === 'shirt') selectedShirt = index;
+      else selectedTrouser = index;
+      updateOutfitPreview();
+    });
+    return button;
   };
 
-  const headerRow = document.createElement('tr');
-  const cornerHeader = document.createElement('th');
-  cornerHeader.scope = 'col';
-  cornerHeader.textContent = 'Shirt ↓';
-  headerRow.append(cornerHeader);
-  trouserColors.forEach((color) => {
-    const header = document.createElement('th');
-    header.scope = 'col';
-    header.append(makeColorLabel(color, 'combination-column-label'));
-    headerRow.append(header);
+  shirtColors.forEach((color, index) => {
+    const button = makePaletteButton(color, index, 'shirt');
+    shirtButtons.push(button);
+    shirtPalette.append(button);
   });
-  combinationHead.append(headerRow);
+  trouserColors.forEach((color, index) => {
+    const button = makePaletteButton(color, index, 'trouser');
+    trouserButtons.push(button);
+    trouserPalette.append(button);
+  });
 
   shirtColors.forEach((shirt, shirtIndex) => {
-    const row = document.createElement('tr');
-    const rowHeader = document.createElement('th');
-    rowHeader.scope = 'row';
-    rowHeader.append(makeColorLabel(shirt, 'combination-row-label'));
-    row.append(rowHeader);
-
     trouserColors.forEach((trouser, trouserIndex) => {
-      const cell = document.createElement('td');
-      cell.className = 'combination-cell';
       const button = document.createElement('button');
-      button.className = 'combination-button';
+      button.className = 'outfit-combination';
       button.type = 'button';
       button.setAttribute('aria-label', `Pair ${shirt.name} shirt with ${trouser.name} trousers`);
       button.setAttribute('aria-pressed', 'false');
@@ -133,18 +132,25 @@ if (pairingGuide) {
       button.style.setProperty('--trouser-color', trouser.hex);
       button.dataset.shirtIndex = shirtIndex;
       button.dataset.trouserIndex = trouserIndex;
-      button.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span>';
+      button.innerHTML = `
+        <span class="combination-garment">
+          <span class="combination-swatch combination-shirt" aria-hidden="true"></span>
+          <span class="combination-label"><small>Shirt</small><strong>${shirt.name}</strong></span>
+        </span>
+        <span class="combination-arrow" aria-hidden="true">+</span>
+        <span class="combination-garment">
+          <span class="combination-swatch combination-trouser" aria-hidden="true"></span>
+          <span class="combination-label"><small>Trousers</small><strong>${trouser.name}</strong></span>
+        </span>
+      `;
       button.addEventListener('click', () => {
         selectedShirt = shirtIndex;
         selectedTrouser = trouserIndex;
         updateOutfitPreview();
       });
       combinationButtons.push(button);
-      cell.append(button);
-      row.append(cell);
+      combinations.append(button);
     });
-
-    combinationBody.append(row);
   });
 
   function updateOutfitPreview() {
@@ -162,6 +168,16 @@ if (pairingGuide) {
     combinationButtons.forEach((button) => {
       const isSelected = Number(button.dataset.shirtIndex) === selectedShirt
         && Number(button.dataset.trouserIndex) === selectedTrouser;
+      button.classList.toggle('is-selected', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+    shirtButtons.forEach((button, index) => {
+      const isSelected = index === selectedShirt;
+      button.classList.toggle('is-selected', isSelected);
+      button.setAttribute('aria-pressed', String(isSelected));
+    });
+    trouserButtons.forEach((button, index) => {
+      const isSelected = index === selectedTrouser;
       button.classList.toggle('is-selected', isSelected);
       button.setAttribute('aria-pressed', String(isSelected));
     });
