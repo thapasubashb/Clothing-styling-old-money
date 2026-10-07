@@ -32,6 +32,7 @@ const showSlide = (index) => {
   heroSection?.classList.toggle('is-image-slide', index === 0);
   heroSection?.classList.toggle('is-heritage-slide', index === 1);
   heroSection?.classList.toggle('is-coastal-slide', index === 2);
+  heroSection?.classList.toggle('is-evening-slide', index === 3);
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle('is-active', slideIndex === index);
     heroDots[slideIndex]?.classList.toggle('is-current', slideIndex === index);
@@ -213,7 +214,7 @@ if (heroSlider && canTilt.matches) {
       activeImage?.style.setProperty('--parallax-x', `${x * -12}px`);
       activeImage?.style.setProperty('--parallax-y', `${y * -10}px`);
     }
-    const depthCard = activeSlide?.querySelector('.hero-detail-card, .hero-wardrobe-card');
+    const depthCard = activeSlide?.querySelector('.hero-detail-card');
     depthCard?.style.setProperty('--float-x', `${x * 8}px`);
     depthCard?.style.setProperty('--float-y', `${y * 7}px`);
     depthCard?.style.setProperty('--float-rotate-x', `${y * -4}deg`);
@@ -224,7 +225,7 @@ if (heroSlider && canTilt.matches) {
       image.style.setProperty('--parallax-x', '0px');
       image.style.setProperty('--parallax-y', '0px');
     });
-    heroSlider.querySelectorAll('.hero-detail-card, .hero-wardrobe-card').forEach((card) => {
+    heroSlider.querySelectorAll('.hero-detail-card').forEach((card) => {
       card.style.setProperty('--float-x', '0px');
       card.style.setProperty('--float-y', '0px');
       card.style.setProperty('--float-rotate-x', '0deg');
