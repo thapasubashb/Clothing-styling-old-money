@@ -33,6 +33,7 @@ const showSlide = (index) => {
   heroSection?.classList.toggle('is-heritage-slide', index === 1);
   heroSection?.classList.toggle('is-coastal-slide', index === 2);
   heroSection?.classList.toggle('is-evening-slide', index === 3);
+  heroSection?.classList.toggle('is-escape-slide', index === 4);
   heroSlides.forEach((slide, slideIndex) => {
     slide.classList.toggle('is-active', slideIndex === index);
     heroDots[slideIndex]?.classList.toggle('is-current', slideIndex === index);

@@ -4,7 +4,7 @@ Maison Harth is a responsive, single-page menswear style guide and storefront co
 
 ## Features
 
-- Four-slide hero, including a static coastal-linen opening image and an animated menswear lookbook.
+- Five-slide hero featuring the Riviera edit, heritage tailoring, a summer uniform, evening dressing, and a coastal weekend campaign.
 - Six outfit cards with Beach & resort, Smart casual, and Tailoring filters.
 - Mix-and-match color guide with seven shirt colors and seven trouser colors.
 - All 49 shirt-and-trouser combinations, shown as individual selectable pairings.
