@@ -34,9 +34,6 @@ The project can be opened directly by opening `index.html` in a browser. Alterna
 ```powershell
 python -m http.server 8000
 ```
-
-Then open <http://localhost:8000>.
-
 There are no dependencies to install and no build command.
 
 ## Project files
